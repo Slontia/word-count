@@ -11,25 +11,25 @@ public:
                           TextReader();
 	bool                    ReadFile(std::string filename);
 	bool                    ReadFolder(std::string foldname);
-  int                     char_count() { return char_count_; }
-  int                     word_count() { return word_count_; }
-  int                     line_count() { return line_count_; }
+  int                     char_count() const { return char_count_; }
+  int                     word_count() const { return word_count_; }
+  int                     line_count() const { return line_count_; }
   CountTree::iterator     begin() { return count_tree_.begin(); }
   CountTree::iterator     end() { return count_tree_.end(); }
 protected:
-   CountTree            count_tree_;
+  CountTree               count_tree_;
 private:
-	char                  buf_[kBufferSize];
-	int                   char_count_ = 0;
-  int                   word_count_ = 0;
-	int                   line_count_ = 0;
-	inline bool           IsSplit(char c);
-	inline bool           IsAlpha(char c);
-	inline bool           IsDigit(char c);
-	inline bool           IsBlank(char c);
-	bool                  IsWord(std::string word);
-	virtual void          HandleWord(std::string word) = 0;
-	virtual void          HandleBreak() = 0;
+	char                    buf_[kBufferSize];
+	int                     char_count_ = 0;
+  int                     word_count_ = 0;
+	int                     line_count_ = 0;
+	inline bool             IsSplit(char c) const;
+	inline bool             IsAlpha(char c) const;
+	inline bool             IsDigit(char c) const;
+	inline bool             IsBlank(char c) const;
+	bool                    IsWord(std::string word) const;
+	virtual void            HandleWord(std::string word) = 0;
+	virtual void            HandleBreak() = 0;
 };
 
 class WordReader : public TextReader

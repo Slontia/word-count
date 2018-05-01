@@ -38,9 +38,6 @@
     <ClCompile Include="WordCount.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="limited_heap.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="text_reader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

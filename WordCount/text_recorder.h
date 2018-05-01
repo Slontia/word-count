@@ -4,18 +4,19 @@
 class TextRecorder
 {
 public:
-                TextRecorder(std::string text, int count);
-  bool          operator <(const TextRecorder& tr);
-  bool          operator >(const TextRecorder& tr);
-  bool          operator =(const TextRecorder& tr);
-  bool          operator <=(const TextRecorder& tr);
-  bool          operator >=(const TextRecorder& tr);
-  bool          operator !=(const TextRecorder& tr);
-  int           Compare(std::string text, int count);
-  std::string   text() { return text_; }
-  int           count() { return count_; }
+                        TextRecorder(std::string text, int count);
+                        TextRecorder(const TextRecorder& tr);
+  friend bool           operator <(const TextRecorder& left, const TextRecorder& right);
+  friend bool           operator >(const TextRecorder& left, const TextRecorder& right);
+  friend bool           operator ==(const TextRecorder& left, const TextRecorder& right);
+  friend bool           operator <=(const TextRecorder& left, const TextRecorder& right);
+  friend bool           operator >=(const TextRecorder& left, const TextRecorder& right);
+  friend bool           operator !=(const TextRecorder& left, const TextRecorder& right);
+  int                   Compare(std::string text, int count) const;
+  std::string           text() const { return text_; }
+  int                   count() const { return count_; }
 private:
-  std::string   text_;
-  int           count_ = 0;
-  int           Compare(const TextRecorder& tr);
+  std::string           text_;
+  int                   count_;
+  int                   Compare(const TextRecorder& tr) const;
 };

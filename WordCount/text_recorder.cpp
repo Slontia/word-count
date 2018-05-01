@@ -4,14 +4,16 @@ using std::string;
 
 TextRecorder::TextRecorder(string text, int count) : text_(text), count_(count) {}
 
-int TextRecorder::Compare(string text, int count)
+TextRecorder::TextRecorder(const TextRecorder& cpy) : text_(cpy.text_), count_(cpy.count_) {}
+
+int TextRecorder::Compare(string text, int count) const
 {
   if (this->count_ > count ||
-    (this->count_ == count && strcmp(this->text_.c_str, text.c_str) < 0))
+    (this->count_ == count && strcmp(this->text_.c_str(), text.c_str()) < 0))
   { 
     return 1; 
   }
-  else if (this->count_ == count && strcmp(this->text_.c_str, text.c_str) == 0)
+  else if (this->count_ == count && strcmp(this->text_.c_str(), text.c_str()) == 0)
   { 
     return 0; 
   }
@@ -21,37 +23,37 @@ int TextRecorder::Compare(string text, int count)
   }
 }
 
-int TextRecorder::Compare(const TextRecorder& tr)
+int TextRecorder::Compare(const TextRecorder& tr) const
 {
   return Compare(tr.text_, tr.count_);
 }
 
-bool TextRecorder::operator <(const TextRecorder& tr)
+bool operator <(const TextRecorder& left, const TextRecorder& right)
 {
-  return Compare(tr) == -1;
+  return left.Compare(right) == -1;
 }
 
-bool TextRecorder::operator =(const TextRecorder& tr)
+bool operator ==(const TextRecorder& left, const TextRecorder& right)
 {
-  return Compare(tr) == 0;
+  return left.Compare(right) == 0;
 }
 
-bool TextRecorder::operator >(const TextRecorder& tr)
+bool operator >(const TextRecorder& left, const TextRecorder& right)
 {
-  return Compare(tr) == 1;
+  return left.Compare(right) == 1;
 }
 
-bool TextRecorder::operator >=(const TextRecorder& tr)
+bool operator >=(const TextRecorder& left, const TextRecorder& right)
 {
-  return Compare(tr) != -1;
+  return left.Compare(right) != -1;
 }
 
-bool TextRecorder::operator !=(const TextRecorder& tr)
+bool operator !=(const TextRecorder& left, const TextRecorder& right)
 {
-  return Compare(tr) != 0;
+  return left.Compare(right) != 0;
 }
 
-bool TextRecorder::operator <=(const TextRecorder& tr)
+bool operator <=(const TextRecorder& left, const TextRecorder& right)
 {
-  return Compare(tr) != 1;
+  return left.Compare(right) != 1;
 }
