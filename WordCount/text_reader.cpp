@@ -55,7 +55,7 @@ bool TextReader::ReadFile(string filename)
 bool TextReader::ReadFolder(string foldername)
 {
   _finddata_t     fdata; // <io.h>
-  long            fhandle = 0;
+  intptr_t        fhandle = 0;
   if ((fhandle = _findfirst(foldername.c_str(), &fdata)) != -1)
   {
     do
@@ -72,6 +72,7 @@ bool TextReader::ReadFolder(string foldername)
         ReadFile(fdata.name); 
       }
     } while (_findnext(fhandle, &fdata) == 0);
+    _findclose(fhandle);
     return true;
   }
   else
@@ -131,9 +132,11 @@ void PhraseReader::HandleWord(string word)
   if (word_list_.size() == phrase_len_)
   {
     string phrase = "";
-    list<string>::iterator it = word_list_.begin();
-    while (it != word_list_.end()) { phrase += *it; }
-    count_tree_[phrase]++;
+    for (list<string>::iterator it = word_list_.begin(); it != word_list_.end(); it++) 
+    { 
+      phrase += *it + ' ';
+    }
+    count_tree_[phrase.substr(0, phrase.length() - 1)]++; // remove the last space
   }
 }
 

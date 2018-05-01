@@ -41,7 +41,6 @@ private:
 	void      HandleBreak();
 };
 
-
 class PhraseReader : public TextReader
 {
 public:
