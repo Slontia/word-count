@@ -28,6 +28,7 @@ bool TextReader::ReadFile(string filename)
       /* record word */
       if (IsSplit(c) && IsWord(word))
       {
+        word_count_++;
         HandleWord(word);
         word = "";
       }
@@ -47,9 +48,14 @@ bool TextReader::ReadFolder(string foldername)
       if (fdata.attrib & _A_SUBDIR)	// is folder
       {
         if (strcmp(fdata.name, ".") != 0 && strcmp(fdata.name, "..") != 0) // not parent or self
-        { ReadFolder(fdata.name); }
+        { 
+          ReadFolder(fdata.name); 
+        }
       }
-      else { ReadFile(fdata.name); }
+      else
+      { 
+        ReadFile(fdata.name); 
+      }
     } while (_findnext(fhandle, &fdata) == 0);
   }
 }

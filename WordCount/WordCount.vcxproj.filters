@@ -27,6 +27,9 @@
     <ClInclude Include="text_reader.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="text_recorder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -39,6 +42,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="text_reader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="text_recorder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
