@@ -8,12 +8,13 @@ TextReader::TextReader() {}
 /* store words into count tree while reading file */
 bool TextReader::ReadFile(string filename)
 {
-  std::ifstream       ifs(filename);
+  std::ifstream       ifs(filename, std::ifstream::ios_base::in);
   string              word = "";
   bool                blank_line = true;
   if (!ifs) { return false; }
-  while (ifs.read(buf_, kBufferSize));
+  while (!ifs.eof())
   {
+    ifs.read(buf_, kBufferSize);
     std::streamsize read_size = ifs.gcount();
     char_count_ += read_size;
     for (std::streamsize i = 0; i < read_size; i++)

@@ -6,7 +6,7 @@ class TextReader
 {
 public:
   typedef std::unordered_map<std::string, int> CountTree;
-	static const int        kBufferSize = 1024;
+	static const int        kBufferSize = 1024 * 1024;
 	static const int        kAlphaHeadLen = 4;
                           TextReader();
 	bool                    ReadFile(std::string filename);

@@ -1,0 +1,13 @@
+characters: 1808033
+words: 190605
+lines: 14974
+says: 3008
+that: 2674
+have: 2158
+said: 2088
+from: 2073
+will: 1889
+australia: 1586
+with: 1541
+they: 1363
+been: 1287
