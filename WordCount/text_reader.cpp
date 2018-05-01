@@ -56,7 +56,7 @@ bool TextReader::ReadFolder(string foldername)
 {
   _finddata_t     fdata; // <io.h>
   intptr_t        fhandle = 0;
-  if ((fhandle = _findfirst(foldername.c_str(), &fdata)) != -1)
+  if ((fhandle = _findfirst((foldername + "\\*").c_str(), &fdata)) != -1)
   {
     do
     {
@@ -64,12 +64,12 @@ bool TextReader::ReadFolder(string foldername)
       {
         if (strcmp(fdata.name, ".") != 0 && strcmp(fdata.name, "..") != 0) // not parent or self
         { 
-          ReadFolder(fdata.name); 
+          ReadFolder(foldername + '\\' + fdata.name);
         }
       }
       else
       { 
-        ReadFile(fdata.name); 
+        ReadFile(foldername + '\\' + fdata.name);
       }
     } while (_findnext(fhandle, &fdata) == 0);
     _findclose(fhandle);
