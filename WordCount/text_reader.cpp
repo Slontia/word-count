@@ -27,13 +27,25 @@ bool TextReader::ReadFile(string filename)
       }
       if (!IsBlank(c)) { blank_line = false; }
       /* record word */
-      if (IsSplit(c) && IsWord(word))
+      if (IsSplit(c))
       {
-        word_count_++;
-        HandleWord(word);
+        if (IsWord(word))
+        {
+          word_count_++;
+          HandleWord(word);
+        }
         word = "";
       }
+      else
+      {
+        word = word + c;
+      }
     }
+  }
+  if (IsWord(word))
+  {
+    word_count_++;
+    HandleWord(word);
   }
   if (!blank_line) { line_count_++; }
   ifs.close();
@@ -103,7 +115,7 @@ WordReader::WordReader() {}
 void WordReader::HandleWord(string word)
 {
   std::transform(word.begin(), word.end(), word.begin(), ::tolower); // to lowercase
-  count_tree_[word]++; // [warning]
+  count_tree_[word]++;
 }
 
 void WordReader::HandleBreak() {}

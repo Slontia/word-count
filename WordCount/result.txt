@@ -1,0 +1,13 @@
+characters: 129
+words: 18
+lines: 6
+bbbbb: 2
+ccccc: 2
+hhhhh: 2
+aaaa: 1
+aaaaa: 1
+ccdf35345: 1
+ggggg: 1
+gggggggg: 1
+jjjjjj: 1
+kkkkkk: 1
