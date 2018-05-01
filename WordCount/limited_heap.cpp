@@ -3,7 +3,7 @@
 template <class T, class C>
 LimitedHeap<T, C>::LimitedHeap(int size, C comp)
 {
-	if (size <= 0) size = 1;
+  if (size <= 0) { size = 1; }
 	max_size_ = size;
 	cur_size_ = 0;
 	heap_.reserve(size + 1);
